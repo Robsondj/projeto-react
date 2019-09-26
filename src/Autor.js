@@ -23,18 +23,16 @@ class FormularioAutor extends Component {
       dataType:'json',
       type:'post',
       data: JSON.stringify({nome:this.state.nome,email:this.state.email,senha:this.state.senha}),
-      success: function(novaListagem){
+      success: (novaListagem) => {
         PubSub.publish('atualiza-lista-autores',novaListagem);        
         this.setState({nome:'',email:'',senha:''});
-      }.bind(this),
-      error: function(resposta){
+      },
+      error: (resposta) => {
         if(resposta.status === 400) {
           new TratadorErros().publicaErros(resposta.responseJSON);
         }
       },
-      beforeSend: function() {
-        PubSub.publish("limpa-erros",{});
-      }      
+      beforeSend: () => PubSub.publish("limpa-erros",{}) 
     });
   }
 
