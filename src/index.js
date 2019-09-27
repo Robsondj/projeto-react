@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import AutorBox from './Autor';
+import LivroBox from './Livro';
 import Home from './Home';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
@@ -12,7 +13,7 @@ ReactDOM.render(
 		  <Switch>
 			<Route exact path="/" component={Home}/>
 			<Route path="/autor" component={AutorBox}/>
-			<Route path="/livro"/>
+			<Route path="/livro" component={LivroBox}/>
 		  </Switch>
 		</App>
     </Router>), 
